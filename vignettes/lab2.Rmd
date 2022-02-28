@@ -1,0 +1,107 @@
+---
+title: "lab2"
+author: "celiaflorea"
+date: "2/13/2022"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+
+library(ggplot2)
+library(tibble)
+
+slamecka_design <- tibble(number_of_learning_trials = rep(c(2,4,8), each=6),
+                          number_of_IL = rep(rep(c(2,4,8), 2), 3),
+                          subjects = 1:18,
+                          recall = c(35,21,6,
+                                   39,31,8,
+                                   40,34,18,
+                                   52,42,26,
+                                   61,58,46,
+                                   73,66,52
+                                   )
+                          )
+
+ggplot(slamecka_design,aes(x=number_of_IL,
+                           group = number_of_learning_trials,
+                           y=recall))+
+  geom_line(stat = "summary", fun = "mean")+
+  geom_point(stat = "summary", fun = "mean",)+
+  theme_classic()
+
+```
+
+```{r}
+
+#added labels to axis 
+
+slamecka_design <- tibble(number_of_learning_trials = rep(c(2,4,8), each=6),
+                          number_of_IL = rep(rep(c(2,4,8), 2), 3),
+                          subjects = 1:18,
+                          recall = c(35,21,6,
+                                   39,31,8,
+                                   40,34,18,
+                                   52,42,26,
+                                   61,58,46,
+                                   73,66,52
+                                   )
+                          )
+
+ggplot(slamecka_design,aes(x=number_of_IL,
+                           group = number_of_learning_trials,
+                           y=recall))+
+  geom_line(stat = "summary", fun = "mean")+
+  geom_point(stat = "summary", fun = "mean",)+
+  xlab("Number of interpolated lists")+
+  ylab("Number of words correct")+
+  theme_classic()
+  
+  #scale_y_continuous(breaks = c(20, 40, 60, 80), limits=c(0, 80))+
+ 
+  # scale_x_continuous(breaks= (2, 4, 8)), limits=
+  #annotate()
+                       
+  
+
+ 
+ 
+                    
+# can not figure out how to remove the 6/fix the scale length - tried multiple functions in ggplot with 
+#"Number of interpolated lists",labels = c("2", "4", "8"))+"
+
+```
+
+```{r}
+
+#add 3rd IV 
+
+slamecka_design <- tibble(number_of_learning_trials = rep(c(2,4,8), each=6),
+                          number_of_IL = rep(rep(c(2,4,8), 2), 3),
+                          subjects = 1:18,
+                          recall = c(35,21,6,
+                                   39,31,8,
+                                   40,34,18,
+                                   52,42,26,
+                                   61,58,46,
+                                   73,66,52
+                                   )
+                          )
+
+ggplot(slamecka_design,aes(x=number_of_IL,
+                           group = number_of_learning_trials,
+                           y=recall))+
+  geom_line(stat = "summary", fun = "mean")+
+  geom_point(stat = "summary", fun = "mean",)+
+  xlab("Number of interpolated lists")+
+  ylab("Number of words correct")+
+  theme_classic()
+
+
+
+```
+
+
