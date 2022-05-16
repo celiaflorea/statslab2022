@@ -28,3 +28,61 @@ plot(pressure)
 ```
 
 Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
+## problem 1 (can skip- for self to understand, explain)
+```{r}
+
+library(tibble)
+
+# set number of subjects per cell
+
+n <- 10
+factorial_data <- tibble(A = factor(rep(c("L1","L2"), each = n)),
+                         B = factor(rep(c("L1","L2"), n)),
+                         C = factor(rep(c ("A", "B", "C", "D")), each = n/2),
+                         DV = c(rnorm(n/2, -2 ,1), 
+                              rnorm(n/2,-2,1),
+                              rnorm(n/2,2,1),
+                              rnorm(n/2,2,1))
+                         
+  a_means
+  B-means
+  cell_means
+  grand_mean
+                                    
+                         
+factorial_data
+mutate 
+
+
+
+
+```
+
+#problem #5
+
+```{r}
+
+library(tibble)
+
+
+# set number of subjects per cell
+
+n <- 10
+
+factorial_data <- tibble(A = factor(rep(c("L1","L2"), each = n)),
+                         B = factor(rep(c("L1","L2"), each = n/2)),
+                         DV = rnorm(n*2,0,1))
+
+aov_out <- aov(DV-A*B, data +factorial_data)
+summary(aov_out)
+
+#define comparisons 
+want the cobtrasts to reflect contrasts in 2x2
+
+c1 < c(1, 1,-1, -1),
+c2 <- c(1, -1, 1, -1),
+c3 <- c(1, -1, -1, 1) 
+
+```
+

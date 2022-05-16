@@ -28,3 +28,71 @@ plot(pressure)
 ```
 
 Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+```{r}
+library(tidyverse)
+
+df <- data.frame (A= c("A1", "A1", "A2", "A2"), 
+                 B = c(1, 2, 1, 2), 
+                 dv = c(0, 0, 0.5, 0.25))
+                 
+                
+ggplot(df, aes(y=dv, x=B, fill = A))  + 
+  geom_bar(stat = "identity", position = "dodge")+
+  geom_point()+
+  geom_line()
+                 
+                 
+```
+
+```{r}
+
+N <- 550
+
+
+
+A_pvalue <- c()
+B_pvalue <- c()
+AB_pvalue <- c()
+for(i in 1:1000){
+  IVA <- rep(rep(c("1","2"), each=2),N)
+  IVB <- rep(rep(c("1","2"), 2),N)
+  DV <- c(replicate(N,c(rnorm(1,0,1), # means A1B1
+                        rnorm(1,0,1), # means A1B2
+                        rnorm(1,.5,1), # means A2B1
+                        rnorm(1,.25,1)  # means A2B2
+          )))
+  sim_df <- data.frame(IVA,IVB,DV)
+  
+  aov_results <- summary(aov(DV~IVA*IVB, sim_df))
+  A_pvalue[i]<-aov_results[[1]]$`Pr(>F)`[1]
+  B_pvalue[i]<-aov_results[[1]]$`Pr(>F)`[2]
+  AB_pvalue[i]<-aov_results[[1]]$`Pr(>F)`[3]
+}
+
+length(A_pvalue[A_pvalue<0.05])/1000
+#> [1] 0.88
+length(B_pvalue[B_pvalue<0.05])/1000
+#> [1] 0.036
+length(AB_pvalue[AB_pvalue<0.05])/1000
+#> [1] 0.046
+
+
+```
+#answer - need 60 per cell for total N=240 for adequate power 
+480 gets close to 80%
+need at least 550 for 80% power
+
+
+
+bonus q- create a power curve 
+could create a little loop to increase number until N gets the power 
+
+
+
+```{r}
+
+browse
+
+
+```
+
