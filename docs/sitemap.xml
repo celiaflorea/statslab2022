@@ -16,6 +16,15 @@
     <loc>/articles/lab3.html</loc>
   </url>
   <url>
+    <loc>/articles/lab6.comparisons.html</loc>
+  </url>
+  <url>
+    <loc>/articles/lab8.html</loc>
+  </url>
+  <url>
+    <loc>/articles/test.slides.html</loc>
+  </url>
+  <url>
     <loc>/authors.html</loc>
   </url>
   <url>
@@ -26,5 +35,11 @@
   </url>
   <url>
     <loc>/reference/index.html</loc>
+  </url>
+  <url>
+    <loc>/reference/sem.html</loc>
+  </url>
+  <url>
+    <loc>/slide test.html</loc>
   </url>
 </urlset>

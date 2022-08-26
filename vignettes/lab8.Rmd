@@ -89,10 +89,3 @@ could create a little loop to increase number until N gets the power
 
 
 
-```{r}
-
-browse
-
-
-```
-

@@ -64,7 +64,6 @@ length(A[A> 0])/10000
 
 ```{r}
 
-
 A <- replicate(10000, sum(rbinom(20, 1, .05)))
 hist(A)
 
@@ -73,17 +72,18 @@ length(A[A> 0])/10000
 A<-rbinom(10000, 20, .05)
 
 A <-rbinom(10000, 50, .05)
-length(A[A > 0])/10000))
+
+#length(A[A > 0])/10000))
 
 
 
-?ribnom
+
 
 ```
 
 ```{r}
 
-t_results  <- replicate(1000, t.test(rnorm(10, 0, 1), rnorm(10, 0, 1) var.equal= TRUE)$p.value)
+t_results  <- replicate(1000, t.test(rnorm(10, 0, 1), rnorm(10, 0, 1), var.equal= TRUE)$p.value)
 
 hist(t_results)
 
